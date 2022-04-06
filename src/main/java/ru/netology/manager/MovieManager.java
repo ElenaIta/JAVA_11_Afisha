@@ -30,6 +30,7 @@ public class MovieManager {
         return this.items;
     }
 
+
     // вывод в обратном порядке
     public Movie[] findLast() {
         int resultLength = Math.min(items.length, lastCount);
