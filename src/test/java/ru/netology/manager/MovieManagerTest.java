@@ -11,15 +11,15 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class MovieManagerTest {
 
-    @Test// добавление фильмов
-    public void shouldAddMovie() {
+    @Test //новый тест
+    void getLastMovieIsLimit() {
         Movie first = new Movie(1, "Leon", 2003);
         Movie second = new Movie(2, "Stalker", 2004);
         Movie third = new Movie(3, "1+1", 2005);
         Movie fourth = new Movie(4, "Invisible", 2006);
         Movie fifth = new Movie(5, "Troll's tour", 2007);
         Movie sixth = new Movie(6, "I BelieveInLove", 2008);
-        Movie seventh = new Movie(7, "Pinocchio",2009);
+        Movie seventh = new Movie(7, "Pinocchio", 2009);
         Movie eighth = new Movie(8, "House of Cards", 2010);
         Movie ninth = new Movie(9, "The man is unknown", 2011);
         Movie tenth = new Movie(10, "Method", 2012);
@@ -36,13 +36,80 @@ class MovieManagerTest {
         man.add(ninth);
         man.add(tenth);
 
-        Movie[] expected = {first, second, third, fourth, fifth, sixth, seventh, eighth, ninth, tenth};
+        Movie[] expected = new Movie[]{first, second, third, fourth, fifth, sixth, seventh, eighth, ninth, tenth};
         Movie[] actual = man.findAll();
 
         System.out.println(Arrays.toString(actual));
 
         assertArrayEquals(expected, actual);
+    }
 
+    @Test //новый тест
+    void getLastFilmsUnderLimit() {
+        Movie first = new Movie(1, "Leon", 2003);
+        Movie second = new Movie(2, "Stalker", 2004);
+        Movie third = new Movie(3, "1+1", 2005);
+        Movie fourth = new Movie(4, "Invisible", 2006);
+
+        MovieManager man = new MovieManager();
+        man.add(first);
+        man.add(second);
+        man.add(third);
+        man.add(fourth);
+
+        Movie[] expected = new Movie[]{first, second, third, fourth};
+        Movie[] actual = man.findAll();
+
+        System.out.println(Arrays.toString(actual));
+
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test //новый тест
+    public void NoArg() {
+        MovieManager man = new MovieManager();
+        Movie first = new Movie();
+        Movie[] actual = man.findLast();
+        Movie[] expected = new Movie[] {};
+
+        System.out.println(Arrays.toString(actual));
+
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test// добавление фильмов
+    public void shouldAddMovie() {
+        Movie first = new Movie(1, "Leon", 2003);
+        Movie second = new Movie(2, "Stalker", 2004);
+        Movie third = new Movie(3, "1+1", 2005);
+        Movie fourth = new Movie(4, "Invisible", 2006);
+        Movie fifth = new Movie(5, "Troll's tour", 2007);
+        Movie sixth = new Movie(6, "I BelieveInLove", 2008);
+        Movie seventh = new Movie(7, "Pinocchio", 2009);
+        Movie eighth = new Movie(8, "House of Cards", 2010);
+        Movie ninth = new Movie(9, "The man is unknown", 2011);
+        Movie tenth = new Movie(10, "Method", 2012);
+        Movie elevan = new Movie(11, "Method new", 2013);
+
+        MovieManager man = new MovieManager();
+        man.add(first);
+        man.add(second);
+        man.add(third);
+        man.add(fourth);
+        man.add(fifth);
+        man.add(sixth);
+        man.add(seventh);
+        man.add(eighth);
+        man.add(ninth);
+        man.add(tenth);
+        man.add(elevan);
+
+        Movie[] expected = {first, second, third, fourth, fifth, sixth, seventh, eighth, ninth, tenth, elevan};
+        Movie[] actual = man.findAll();
+
+        System.out.println(Arrays.toString(actual));
+
+        assertArrayEquals(expected, actual);
     }
 
     @Test // вывод в обратном порядке

@@ -40,8 +40,6 @@ public class MovieManager {
 //            resultLength = lastCount;
 //        }
         Movie[] result = new Movie[resultLength];
-
-
         for (int i = 0; i < result.length; i++) {
             result[i] = items[items.length - 1 - i];
         }
